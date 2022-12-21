@@ -1,20 +1,10 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
-input_vector = np.array([3, 1.5], [2, 1], [4, 1.5], [3, 4], [3.5, 0.5], [2, 0.5], [5.5, 1], [1, 1])
-weights_1 = np.array([1.45, -0.66])
-bias = np.array([0.0])
-targets = np.array([0, 1, 0, 1, 0, 1, 1, 0])
-learning_rate = 0.1
-
-
-
-neural_network = NeuralNetwork(learning_rate)
-neural_network.predict(input_vector)
+input_vector = np.array([2, 1.5])
 
 class NeuralNetwork:
     def __init__(self, learing_rate):
-        self.weights = np.array([np.randn(), np.random,randn()])
+        self.weights = np.array([np.random.randn(), np.random.randn()])
         self.bias = np.random.randn()
         self.learning_rate = learing_rate
 
@@ -79,3 +69,22 @@ class NeuralNetwork:
                 cumulative_errors.append(cumulative_error)
             
             return cumulative_errors
+
+import matplotlib.pyplot as plt
+
+input_vectors = np.array([[3, 1.5], [2, 1], [4, 1.5], [3, 4], [3.5, 0.5], [2, 0.5], [5.5, 1], [1, 1]])
+
+targets = np.array([0, 1, 0, 1, 0, 1, 1, 0])
+
+learning_rate = 0.1
+
+neural_network = NeuralNetwork(learning_rate)
+
+training_error = neural_network.train(input_vectors, targets, 10000)
+
+
+plt.plot(training_error)
+plt.xlabel('Iterations')
+plt.ylabel('Error for all training instances')
+plt.autoscale()
+plt.show()
